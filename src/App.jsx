@@ -3,7 +3,8 @@ import Timer from "./components/Timer";
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
+      <h1 className="text-center"> Stay Focused </h1>
       <Header />
       <Timer />
     </div>
