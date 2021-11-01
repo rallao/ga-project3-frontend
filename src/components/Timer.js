@@ -5,7 +5,7 @@ const Completionist = () => <span>You finish</span>;
 
 const Timer = () => {
   return (
-    <div>
+    <div className="text-center">
       <h1>This is the Pomodoro Timer</h1>
 
       <button>Start Timer</button>
