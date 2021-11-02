@@ -40,7 +40,7 @@ const Task = () => {
   // editTask function
   const editTask = (item) => {
     // Check if function is grabbing id.
-    console.log(item.id);
+    console.log(item);
 
     // Change the boolean state to true.
     setEditMode(true);
