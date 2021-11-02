@@ -51,16 +51,18 @@ const Task = () => {
   const editTaskList = e => {
     e.preventDefault();
     if (!task.trim()) {
-      console.log("Error: Task with no value");
-      return;
+      console.log("Error: Task with no value")
+      return
     }
 
     // check if the item.id is equal to the edited task, if true return new taskNAme value, if false return other item.
     const editedArray = tasks.map(item => item.id === id ? {id:id, taskName:task} : item)
 
-    // return the edited array
+    // return the edited array and empty
     setTasks(editedArray)
-    setEditMode(true)
+    setEditMode(false)
+    setTask('');
+    setId('');
   };
 
   return (
