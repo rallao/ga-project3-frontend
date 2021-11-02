@@ -6,6 +6,8 @@ const Task = () => {
   // add useState to React
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
+  const [editMode, setEditMode] = useState(false);
+  const [id, setId] = useState('')
 
   // addTask function.
   const addTask = (e) => {
@@ -26,14 +28,40 @@ const Task = () => {
   };
 
   // deleteTask function
-  const deleteTask = id => {
+  const deleteTask = (id) => {
     // Check if function is grabbing id.
-    console.log(id)
+    console.log(id);
 
     // generate an filtered array, if the
-    const filteredArray = tasks.filter(item => item.id !== id)
-    setTasks(filteredArray)
-  }
+    const filteredArray = tasks.filter((item) => item.id !== id);
+    setTasks(filteredArray);
+  };
+
+  // editTask function
+  const editTask = (item) => {
+    // Check if function is grabbing id.
+    console.log(item.id);
+
+    // Change the boolean state to true.
+    setEditMode(true);
+    setTask(item.taskName);
+    setId(item.id);
+  };
+
+  const editTaskList = e => {
+    e.preventDefault();
+    if (!task.trim()) {
+      console.log("Error: Task with no value");
+      return;
+    }
+
+    // check if the item.id is equal to the edited task, if true return new taskNAme value, if false return other item.
+    const editedArray = tasks.map(item => item.id === id ? {id:id, taskName:task} : item)
+
+    // return the edited array
+    setTasks(editedArray)
+    setEditMode(true)
+  };
 
   return (
     <div className="row">
@@ -43,10 +71,16 @@ const Task = () => {
           {tasks.map((item) => (
             <li className="list-group-item" key={item.id}>
               <span className="lead">{item.taskName}</span>
-              <button className="btn btn-danger btn-sm float-right mx-2" onClick={() => deleteTask(item.id)}>
+              <button
+                className="btn btn-danger btn-sm float-right mx-2"
+                onClick={() => deleteTask(item.id)}
+              >
                 Delete
               </button>
-              <button className="btn btn-warning btn-sm float-right">
+              <button
+                className="btn btn-warning btn-sm float-right"
+                onClick={() => editTask(item)}
+              >
                 Edit
               </button>
             </li>
@@ -54,8 +88,8 @@ const Task = () => {
         </ul>
       </div>
       <div className="col-4">
-        <h4 className="text-center">Form</h4>
-        <form onSubmit={addTask}>
+        <h4 className="text-center">{editMode ? "Edit Task" : "Add Task"}</h4>
+        <form onSubmit={editMode ? editTaskList : addTask}>
           <input
             type="text"
             className="form-control mb-2"
@@ -65,9 +99,15 @@ const Task = () => {
             //
             value={task}
           />
-          <button className="btn btn-dark btn-block" type="submit">
-            Add Task
-          </button>
+          {editMode ? (
+            <button className="btn btn-warning btn-block" type="submit">
+              Edit Task
+            </button>
+          ) : (
+            <button className="btn btn-dark btn-block" type="submit">
+              Add Task
+            </button>
+          )}
         </form>
       </div>
     </div>
