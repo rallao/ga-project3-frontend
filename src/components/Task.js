@@ -31,8 +31,8 @@ const Task = () => {
         <h4 className="text-center">Task List</h4>
         <ul className="list-group">
           {tasks.map((item) => (
-            <li className="list-group-item">
-              <span className="lead">Task Name</span>
+            <li className="list-group-item" key={item.id}>
+              <span className="lead">{item.taskName}</span>
               <button className="btn btn-danger btn-sm float-right mx-2">
                 Delete
               </button>
