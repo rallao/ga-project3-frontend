@@ -29,6 +29,10 @@ const Task = () => {
   const deleteTask = id => {
     // Check if function is grabbing id.
     console.log(id)
+
+    // generate an filtered array, if the
+    const filteredArray = tasks.filter(item => item.id !== id)
+    setTasks(filteredArray)
   }
 
   return (
