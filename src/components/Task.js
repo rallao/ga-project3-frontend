@@ -25,6 +25,12 @@ const Task = () => {
     setTask("");
   };
 
+  // deleteTask function
+  const deleteTask = id => {
+    // Check if function is grabbing id.
+    console.log(id)
+  }
+
   return (
     <div className="row">
       <div className="col-8">
@@ -33,7 +39,7 @@ const Task = () => {
           {tasks.map((item) => (
             <li className="list-group-item" key={item.id}>
               <span className="lead">{item.taskName}</span>
-              <button className="btn btn-danger btn-sm float-right mx-2">
+              <button className="btn btn-danger btn-sm float-right mx-2" onClick={() => deleteTask(item.id)}>
                 Delete
               </button>
               <button className="btn btn-warning btn-sm float-right">
