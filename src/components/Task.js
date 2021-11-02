@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Task = () => {
+
+  const [task, setTask] = useState('')
+
   return (
     <div className="row">
       <div className="col-8">
@@ -22,6 +25,9 @@ const Task = () => {
             type="text"
             className="form-control mb-2"
             placeholder="New task"
+
+            // handle the user input in realtime with onChange.
+            onChange={ e => setTask(e.target.value) }
           />
           <button className="btn btn-dark btn-block" type="submit">
             Add Task
