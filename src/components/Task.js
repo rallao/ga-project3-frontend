@@ -9,6 +9,8 @@ const Task = () => {
   const [editMode, setEditMode] = useState(false);
   const [id, setId] = useState('')
 
+  const API_URL = 'http://localhost:3001/api/tasks'
+
   // addTask function.
   const addTask = (e) => {
     // prevent the page reload on submit.
