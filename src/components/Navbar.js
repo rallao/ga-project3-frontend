@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Header = () => {
+const Navbar = () => {
     return (
         <div className="text-center">
-            <h1>This is the Header</h1>
+            <h1>This is the NavBar</h1>
         </div>
     )
 }
 
-export default Header
+export default Navbar
 

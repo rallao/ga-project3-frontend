@@ -1,14 +1,14 @@
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Timer from "./components/Timer";
 import Task from "./components/Task";
 
 function App() {
   return (
     <div className="container">
-      <Header />
+      <Navbar />
       <hr />
-      <Timer />
-      <hr />
+      {/* <Timer />
+      <hr /> */}
       <Task />
     </div>
   );
