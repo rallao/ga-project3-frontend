@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import Timer from "./components/Timer";
+// import Timer from "./components/Timer";
 import Task from "./components/Task";
 
 function App() {
