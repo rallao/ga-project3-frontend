@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 // Import Components
 import Header from "./components/Header";
@@ -8,14 +8,14 @@ import Task from "./components/Task";
 
 // Import Pages
 import Home from './pages/Home'
-import Login from './pages/Login'
+import Login from './pages/Login.js'
 import Todolist from './pages/Todolist'
 
 function App() {
   return (
     <div className="container">
       <Header />
-      <Routes>
+      <Switch>
         <Route exact path="/">
           <Home />
         </Route>
@@ -26,7 +26,7 @@ function App() {
           <Todolist />
           <Task />
         </Route>
-      </Routes>
+      </Switch>
       
     </div>
   );
