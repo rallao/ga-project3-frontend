@@ -1,10 +1,12 @@
-import Navbar from "./components/Navbar";
+import { useState, useEffect } from "react";
+import { Routes, Route, Redirect } from 'react-router-dom';
+
+// Import Components
+import Header from "./components/Header";
 // import Timer from "./components/Timer";
 import Task from "./components/Task";
-import { useState, useEffect } from "react";
-import { Switch, Route, Redirect } from 'react-router-dom';
 
-
+// Import Pages
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Todolist from './pages/Todolist'
@@ -12,11 +14,20 @@ import Todolist from './pages/Todolist'
 function App() {
   return (
     <div className="container">
-      <Navbar />
-      <hr />
-      {/* <Timer />
-      <hr /> */}
-      <Task />
+      <Header />
+      <Routes>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/todolist">
+          <Todolist />
+          <Task />
+        </Route>
+      </Routes>
+      
     </div>
   );
 }
