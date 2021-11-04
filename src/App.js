@@ -14,15 +14,25 @@ import Login from "./pages/Login.js";
 import Todolist from "./pages/Todolist";
 
 function App() {
-  // Login Feature
   const [user, setUser] = useState(null);
+
+  const [apitasks, setApitasks] = useState([]);
+
+  const API_URL = "http://localhost:3001/api/apitasks"; // DEV
+
+  // apitask helper functions
+  const getApitask = async () => {
+    const response = await fetch(API_URL);
+    const apitask = await response.json();
+    setApitasks(apitask);
+  };
 
   useEffect(() => {
     const unsuscribe = auth.onAuthStateChanged((user) => setUser(user));
+    getApitask();
     return () => unsuscribe();
   }, [user]);
 
-  
   return (
     <div className="container">
       <Header user={user} />
