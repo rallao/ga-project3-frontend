@@ -1,12 +1,33 @@
-import firebase from "firebase/app";
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD2rqc733yy0EgQrtUn-NZHgiAlBsAnG5A",
-  authDomain: "stay-focused-4e0ea.firebaseapp.com",
-  projectId: "stay-focused-4e0ea",
-  storageBucket: "stay-focused-4e0ea.appspot.com",
-  messagingSenderId: "269731414546",
-  appId: "1:269731414546:web:dffcc879e82c6079538ecb",
+    apiKey: "AIzaSyA5FiVo9-LEB0pwQw9w3kcQ6dCyxedxbaU",
+    authDomain: "react-crm-4db12.firebaseapp.com",
+    projectId: "react-crm-4db12",
+    storageBucket: "react-crm-4db12.appspot.com",
+    messagingSenderId: "379849078502",
+    appId: "1:379849078502:web:ba4baab30a0d29c2a16d27"
 };
 
 firebase.initializeApp(firebaseConfig);
+
+// set up auth
+const auth = firebase.auth();
+const provider = new firebase.auth.GoogleAuthProvider()
+
+
+function signIn() {
+    return auth.signInWithPopup(provider);
+}
+
+function logOut() {
+    return auth.signOut();
+}
+
+
+export {
+    auth,
+    signIn,
+    logOut
+}
