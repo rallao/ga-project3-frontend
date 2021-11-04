@@ -1,8 +1,11 @@
+import Task from "../components/Task";
+import Header from "../components/Header";
+
 const Todolist = (props) => {
     return (
-        <main>
-            <h1>TodoList</h1>
-        </main>
+        <div>
+            {/* <Task /> */}
+        </div>
     );
 };
 
