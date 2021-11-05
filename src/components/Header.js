@@ -10,18 +10,20 @@ const Header = (props) => {
         <ul>
           {props.user ? (
             <>
-              <li>
-                <img src={props.user.photoURL} alt={props.user.displayName} />
-              </li>
-              <li onClick={logOut}>Logout</li>
-              <li>
                 <Link to="/todolist">Todo List</Link>
-              </li>
+
+              <img
+                src={props.user.photoURL}
+                alt={props.user.displayName}
+                class="rounded-circle"
+                height="40"
+              />
+              <li onClick={logOut}>Logout</li>
             </>
           ) : (
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
+            <button type="button" class="btn btn-link px-3 me-2">
+              Login
+            </button>
           )}
         </ul>
       </nav>
