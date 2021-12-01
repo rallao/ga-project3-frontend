@@ -8,13 +8,17 @@ const Task = () => {
   const [tasks, setTasks] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [id, setId] = useState('')
+  const [fetchData, setFetchData] = useState(false);
   
   // add useEffect to React
   useEffect(() => {
     fetch('http://localhost:3001/api/tasks',{}, 'GET').then(response => 
     response.json()).then(data => 
-    console.log(data));
-  }, [])
+    setTasks(data.map(value => ({
+      id:value._id, 
+      taskName:value.content}))));
+      setFetchData(false);
+  }, [fetchData])
 
   // addTask function.
   const addTask = (e) => {
@@ -28,7 +32,9 @@ const Task = () => {
     }
     // Send the value in console.
     console.log(task);
-    setTasks([...tasks, { id: nanoid(10), taskName: task }]);
+    // setTasks([...tasks, { id: nanoid(10), taskName: task }]);
+    fetch('http://localhost:3001/api/tasks',{ method: 'POST', mode: 'cors', cache: 'no-cache', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' , }, redirect: 'follow', referrerPolicy: 'no-referrer', body: JSON.stringify({ id: nanoid(10), content: task })}, 'POST').then(response => 
+    response.json()).then(data => setFetchData(true));
 
     // Clean up the form
     setTask("");
