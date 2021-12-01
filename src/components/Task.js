@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // ID generator for task object
 import { nanoid } from "nanoid";
 
@@ -8,6 +8,13 @@ const Task = () => {
   const [tasks, setTasks] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [id, setId] = useState('')
+  
+  // add useEffect to React
+  useEffect(() => {
+    fetch('http://localhost:3001/api/tasks',{}, 'GET').then(response => 
+    response.json()).then(data => 
+    console.log(data));
+  }, [])
 
   // addTask function.
   const addTask = (e) => {
