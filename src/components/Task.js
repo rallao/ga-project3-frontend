@@ -65,24 +65,14 @@ const Task = () => {
     console.log(id);
 
     fetch(
-      "http://localhost:3001/api/deleteTask?id=" + id,
+      "http://localhost:3001/api/tasks/" + id,
       {
         method: "DELETE",
-        mode: "cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: { "Content-Type": "application/json" },
-        redirect: "follow",
-        referrerPolicy: "no-referrer",
-        body: JSON.stringify({ id: nanoid(10), content: task }),
       },
-      "POST"
+      "DELETE"
     )
       .then((response) => response.json())
       .then((data) => setFetchData(true));
-    // generate an filtered array, if the
-    const filteredArray = tasks.filter((item) => item.id !== id);
-    setTasks(filteredArray);
   };
 
   // editTask function
@@ -103,13 +93,25 @@ const Task = () => {
       return;
     }
 
-    // check if the item.id is equal to the edited task, if true return new taskNAme value, if false return other item.
-    const editedArray = tasks.map((item) =>
-      item.id === id ? { id: id, taskName: task } : item
-    );
+    fetch(
+      "http://localhost:3001/api/tasks",
+      {
+        method: "PUT",
+        mode: "cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify({ id: id, content: task }),
+      },
+      "PUT"
+    )
+      .then((response) => response.json())
+      .then((data) => setFetchData(true));
+
 
     // return the edited array and empty
-    setTasks(editedArray);
     setEditMode(false);
     setTask("");
     setId("");
