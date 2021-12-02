@@ -12,7 +12,7 @@ const Task = () => {
 
   // add useEffect to React
   useEffect(() => {
-    fetch("http://localhost:3001/api/tasks", {}, "GET")
+    fetch("https://fathomless-gorge-28969.herokuapp.com/api/tasks", {}, "GET")
       .then((response) => response.json())
       .then((data) =>
         setTasks(
@@ -39,7 +39,7 @@ const Task = () => {
     console.log(task);
     // setTasks([...tasks, { id: nanoid(10), taskName: task }]);
     fetch(
-      "http://localhost:3001/api/tasks",
+      "https://fathomless-gorge-28969.herokuapp.com/api/tasks",
       {
         method: "POST",
         mode: "cors",
@@ -65,7 +65,7 @@ const Task = () => {
     console.log(id);
 
     fetch(
-      "http://localhost:3001/api/tasks/" + id,
+      "https://fathomless-gorge-28969.herokuapp.com/api/tasks/" + id,
       {
         method: "DELETE",
       },
@@ -94,7 +94,7 @@ const Task = () => {
     }
 
     fetch(
-      "http://localhost:3001/api/tasks",
+      "https://fathomless-gorge-28969.herokuapp.com/api/tasks",
       {
         method: "PUT",
         mode: "cors",
