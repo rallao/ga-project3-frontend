@@ -18,8 +18,8 @@ Welcome to Get focused App, a simple to-do list that will make you get things do
 
 ### Links
 
-[www.StayFocused.fm](https://stayfocused.fm/)
-[Backend Repo](https://github.com/rallao/ga-project3-backend)
+* [www.StayFocused.fm](https://stayfocused.fm/)
+* [Backend Repo](https://github.com/rallao/ga-project3-backend)
 
 ### Getting Started
 
