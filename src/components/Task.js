@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { nanoid } from "nanoid"; // ID generator for task object
 
-const URL = 'http://localhost:3001/';    // development
+const URL = "http://localhost:3001/"; // development
 //const URL = 'https://fathomless-gorge-28969.herokuapp.com'   // for production
 
 const Task = () => {
@@ -111,9 +111,7 @@ const Task = () => {
     )
       .then((response) => response.json())
       .then((data) => setFetchData(true));
-
-
-    // return the edited array and empty
+      
     setEditMode(false);
     setTask("");
     setId("");
@@ -150,9 +148,7 @@ const Task = () => {
             type="text"
             className="form-control mb-2"
             placeholder="New task"
-            // handle the user input in realtime with onChange.
             onChange={(e) => setTask(e.target.value)}
-            //
             value={task}
           />
           {editMode ? (
