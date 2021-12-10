@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-// ID generator for task object
-import { nanoid } from "nanoid";
+import { nanoid } from "nanoid"; // ID generator for task object
+
+const URL = 'http://localhost:3001/';    // development
+//const URL = 'https://fathomless-gorge-28969.herokuapp.com'   // for production
 
 const Task = () => {
   // add useState to React
@@ -12,7 +14,7 @@ const Task = () => {
 
   // add useEffect to React
   useEffect(() => {
-    fetch("https://fathomless-gorge-28969.herokuapp.com/api/tasks", {}, "GET")
+    fetch(URL + "api/tasks", {}, "GET")
       .then((response) => response.json())
       .then((data) =>
         setTasks(
@@ -39,7 +41,7 @@ const Task = () => {
     console.log(task);
     // setTasks([...tasks, { id: nanoid(10), taskName: task }]);
     fetch(
-      "https://fathomless-gorge-28969.herokuapp.com/api/tasks",
+      URL + "api/tasks",
       {
         method: "POST",
         mode: "cors",
@@ -65,7 +67,7 @@ const Task = () => {
     console.log(id);
 
     fetch(
-      "https://fathomless-gorge-28969.herokuapp.com/api/tasks/" + id,
+      URL + "api/tasks/" + id,
       {
         method: "DELETE",
       },
@@ -94,7 +96,7 @@ const Task = () => {
     }
 
     fetch(
-      "https://fathomless-gorge-28969.herokuapp.com/api/tasks",
+      URL + "api/tasks",
       {
         method: "PUT",
         mode: "cors",
